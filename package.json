@@ -27,8 +27,10 @@
     "test": "node node_modules/jest/bin/jest.js"
   },
   "dependencies": {
+    "@types/expo": "^25.0.0",
     "expo": "^25.0.0",
     "react": "16.2.0",
-    "react-native": "0.52.0"
+    "react-native": "0.52.0",
+    "shorthash": "^0.0.2"
   }
 }

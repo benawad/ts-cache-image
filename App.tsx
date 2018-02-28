@@ -1,13 +1,30 @@
 import * as React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-export default class App extends React.Component<{}> {
+import CacheImage from "./CacheImage";
+
+export default class App extends React.Component<{}, { uri: string }> {
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      uri:
+        "https://www.planwallpaper.com/static/images/maxresdefault_8yZPhSS.jpg"
+    };
+    this.onPress = this.onPress.bind(this);
+  }
+
+  onPress() {
+    this.setState({
+      uri:
+        "http://wallpaper-gallery.net/images/cool-pictures/cool-pictures-2.jpg"
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.ts to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <CacheImage style={styles.image} uri={this.state.uri} />
+        <Button title="change picture" onPress={this.onPress} />
       </View>
     );
   }
@@ -19,5 +36,9 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center"
+  },
+  image: {
+    height: 200,
+    width: 200
   }
 });
